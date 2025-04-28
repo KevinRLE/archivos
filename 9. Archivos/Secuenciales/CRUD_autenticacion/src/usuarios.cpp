@@ -66,9 +66,9 @@ bool usuarios::loginUsuarios()
         }
         else
         {
-            cout << "\nEl usuario y/o contrasena son incorrectos" << endl;
             bitacora auditoria;
             auditoria.insertar(usuario, "100", "LOGF");
+            cout << "El usuario y/o contrasena son incorrectos..."; //unicamente se cambio de posicion, de linea 68 a la 71
             cin.get();
             contador++;
         }
