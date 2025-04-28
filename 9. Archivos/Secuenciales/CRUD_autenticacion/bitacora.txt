@@ -43,3 +43,16 @@ usuario        100            LOGF
 daguilae       100            LOGF           
 kevin          100            LOGF           
 Esduardo       100            LOGS           
+Fer            100            LOGF           
+Ferdy          100            LOGF           
+Esduardo       100            LOGF           
+kevin          100            LOGF           
+kevin          100            LOGF           
+Esduardo       100            LOGF           
+kevin          100            LOGF           
+Esduardo       100            LOGF           
+kevin          100            LOGS           
+Esduardo       100            LOGF           
+kevin          100            LOGF           
+Esduardo       100            LOGF           
+kevin          100            LOGS           
