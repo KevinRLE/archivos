@@ -1,144 +1,158 @@
 #include "usuarios.h"
-#include<fstream>
-#include<cstdlib>
-#include<conio.h>
-#include<iostream>//se utiliza binari para encriptar y evaluar si el archivo txt es binario
+#include <fstream>
+#include <cstdlib>
+#include <conio.h>
+#include <iostream>
+#include <sstream> // Agregado para procesar cada línea
 #include "bitacora.h"
-#define USER "daguilae"
-#define PASS "123456"
 
 using namespace std;
 
-
 usuarios::usuarios()
 {
-    //ctor
+    // ctor
 }
 
 usuarios::~usuarios()
 {
-    //dtor
+    // dtor
 }
-bool usuarios::loginUsuarios(){
-    string usuario, contra;
-    int contador=0;
-    bool ingresa=false;
-    do{
-        system("cls");
-        cout<<"---------------------------"<<endl;
-        cout<<" AUTENTICACION DE USUARIOS "<<endl;
-        cout<<"---------------------------"<<endl;
-        //ingresa todo el string y no solo un caracter y un enter
-        cout<<"\nNombre Usuario: ";
-        getline(cin, usuario);
-        //getline(cin, contra);
-        cout<<"\nContrasena: ";
 
+bool usuarios::loginUsuarios()
+{
+    string usuario, contra;
+    int contador = 0;
+    bool ingresa = false;
+
+    do
+    {
+        system("cls");
+        cout << "---------------------------" << endl;
+        cout << " AUTENTICACION DE USUARIOS " << endl;
+        cout << "---------------------------" << endl;
+
+        cout << "\nNombre Usuario: ";
+        getline(cin, usuario);
+
+        cout << "\nContrasena: ";
         char caracter;
+        contra = "";
         caracter = getch();
-        contra="";
-        while (caracter != 13) //ASCII TECLA ENTER
+        while (caracter != 13) // ENTER
         {
-            if (caracter != 8) //ASCII TECLA RETROCESO
+            if (caracter != 8) // RETROCESO
             {
-                contra.push_back(caracter); //manda y obtiene a pantalla la contraseña encriptada "*" con push_back
-                cout<<"*";
-            } else
+                contra.push_back(caracter);
+                cout << "*";
+            }
+            else
             {
                 if (contra.length() > 0)
                 {
-                    cout<<"\b \b"; //Efecto caracter borrado
-                    contra = contra.substr(0,contra.length()-1); //Toma todos los caracteres menos el ultimo
+                    cout << "\b \b";
+                    contra = contra.substr(0, contra.length() - 1);
                 }
             }
             caracter = getch();
         }
-        // Obtener datos del archivo SECUENCIAL
-        //instancia de clase USUARIOS, para consultar: primero se consulta el usuario, si existe, se consulta la contraseña
 
-        if (buscar(usuario, contra)){
-            ingresa=true;
+        if (buscar(usuario, contra))
+        {
+            ingresa = true;
             cout << "\n=== Bienvenido al Sistema ===" << endl;
             bitacora auditoria;
-            auditoria.insertar(name, "100", "LOGS"); // <- Usa name (desde archivo)
+            auditoria.insertar(name, "100", "LOGS");
             cin.get();
-        } else {
+        }
+        else
+        {
             cout << "\nEl usuario y/o contrasena son incorrectos" << endl;
             bitacora auditoria;
-            auditoria.insertar(usuario, "100", "LOGF"); // <- Usa usuario (input)
+            auditoria.insertar(usuario, "100", "LOGF");
             cin.get();
             contador++;
         }
-    }while (ingresa==false && contador<3);
-    if (ingresa == false) {
+
+    } while (!ingresa && contador < 3);
+
+    if (!ingresa)
+    {
         cout << "\nLo siento, no puede ingresar al sistema..." << endl;
         cin.get();
     }
+
     return ingresa;
 }
-void usuarios::menuUsuarios(){
-int choice;
-    //int x;
-    do {
-	system("cls");
-	cout<<"\t\t\t-------------------------------------------------------"<<endl;
-	cout<<"\t\t\t |   SISTEMA GESTION DE SEGURIDAD - Catalogos Usuarios |"<<endl;
-	cout<<"\t\t\t-------------------------------------------------------"<<endl;
-	cout<<"\t\t\t 1. Ingreso Usuarios"<<endl;
-	cout<<"\t\t\t 2. Consulta Usuarios"<<endl;
-	cout<<"\t\t\t 3. Modificacion Usuarios"<<endl;
-	cout<<"\t\t\t 4. Eliminacion Usuarios"<<endl;
-	cout<<"\t\t\t 5. Retornar menu anterior"<<endl;
-    cout<<"\t\t\t-------------------------------------------------------"<<endl;
-	cout<<"\t\t\tOpcion a escoger:[1/2/3/4/5]"<<endl;
-	cout<<"\t\t\t-------------------------------------------------------"<<endl;
-	cout<<"\t\t\tIngresa tu Opcion: ";
-    cin>>choice;
 
-    switch(choice)
+void usuarios::menuUsuarios()
+{
+    int choice;
+    do
     {
-    case 1:
-    	/*do
-    	{
-    		catalogos();
-    		cout<<"\n\t\t\t Agrega otra persona(Y,N): ";
-    		cin>>x;
-		}while(x=='y'||x=='Y');*/
-		break;
-	case 2:
-		//display();
-		break;
-	case 3:
-		//modify();
-		break;
-	case 4:
-		//search();
-		break;
-	case 5:
-		break;
-	default:
-		cout<<"\n\t\t\t Opcion invalida...Por favor prueba otra vez..";
-	}
-	cin.get();
-	//getch();
-    }while(choice!= 5);
+        system("cls");
+        cout << "\t\t\t-------------------------------------------------------" << endl;
+        cout << "\t\t\t |   SISTEMA GESTION DE SEGURIDAD - Catalogos Usuarios |" << endl;
+        cout << "\t\t\t-------------------------------------------------------" << endl;
+        cout << "\t\t\t 1. Ingreso Usuarios" << endl;
+        cout << "\t\t\t 2. Consulta Usuarios" << endl;
+        cout << "\t\t\t 3. Modificacion Usuarios" << endl;
+        cout << "\t\t\t 4. Eliminacion Usuarios" << endl;
+        cout << "\t\t\t 5. Retornar menu anterior" << endl;
+        cout << "\t\t\t-------------------------------------------------------" << endl;
+        cout << "\t\t\tOpcion a escoger:[1/2/3/4/5]" << endl;
+        cout << "\t\t\t-------------------------------------------------------" << endl;
+        cout << "\t\t\tIngresa tu Opcion: ";
+        cin >> choice;
+        cin.ignore(); // <- muy importante: limpiar buffer
+
+        switch (choice)
+        {
+        case 1:
+            // Aquí iría código para agregar usuarios
+            break;
+        case 2:
+            // Consultar usuarios
+            break;
+        case 3:
+            // Modificar usuarios
+            break;
+        case 4:
+            // Eliminar usuarios
+            break;
+        case 5:
+            break;
+        default:
+            cout << "\n\t\t\t Opcion invalida...Por favor prueba otra vez.." << endl;
+        }
+        cin.get();
+    } while (choice != 5);
 }
+
 bool usuarios::buscar(string user, string passw)
 {
-	//system("cls");
-	cout << "entre a buscar " << endl;
-	fstream file;   //objeto que representa al archivo de texto
-	int found=0;
-	file.open("Usuarios.txt",ios::in);
-	if(!file)
-	{
-		cout<<"\n-------------------------Datos de la Persona buscada------------------------"<<endl;
-		cout<<"\n\t\t\tNo hay informacion...";
-        return false;
-	}
+    fstream file;
+    file.open("Usuarios.txt", ios::in);
 
-    while (file >> id >> name >> pass) {
-        if (user == id && passw == pass) {
+    if (!file)
+    {
+        cout << "\nNo hay informacion de usuarios..." << endl;
+        return false;
+    }
+
+    string linea;
+    while (getline(file, linea))
+    {
+        istringstream iss(linea);
+        int tempId;
+        string tempName, tempPass;
+
+        iss >> tempId >> tempName >> tempPass;
+
+        if (user == tempName && passw == tempPass)
+        {
+            id = tempId;
+            name = tempName;
+            pass = tempPass;
             file.close();
             return true;
         }
@@ -152,7 +166,8 @@ string usuarios::getNombre()
 {
     return name;
 }
+
 void usuarios::setNombre(string nombre)
 {
-    name=nombre;
+    name = nombre;
 }

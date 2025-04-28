@@ -294,3 +294,54 @@
 	<iomanip>
 	"usuarios.h"
 
+1745809211 source:c:\users\ferit\documents\progra1git\archivos\9. archivos\secuenciales\crud_autenticacion\main.cpp
+	<iostream>
+	<fstream>
+	"usuarios.h"
+	"vendedores.h"
+	"bitacora.h"
+	"aplicaciones.h"
+
+1745809211 c:\users\ferit\documents\progra1git\archivos\9. archivos\secuenciales\crud_autenticacion\include\usuarios.h
+	<iostream>
+
+1745809211 c:\users\ferit\documents\progra1git\archivos\9. archivos\secuenciales\crud_autenticacion\include\vendedores.h
+	<iostream>
+
+1745809211 c:\users\ferit\documents\progra1git\archivos\9. archivos\secuenciales\crud_autenticacion\include\bitacora.h
+	<iostream>
+
+1745809211 c:\users\ferit\documents\progra1git\archivos\9. archivos\secuenciales\crud_autenticacion\include\aplicaciones.h
+	<iostream>
+
+1745809211 source:c:\users\ferit\documents\progra1git\archivos\9. archivos\secuenciales\crud_autenticacion\src\aplicaciones.cpp
+	"aplicaciones.h"
+	"bitacora.h"
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+	"usuarios.h"
+
+1745809211 source:c:\users\ferit\documents\progra1git\archivos\9. archivos\secuenciales\crud_autenticacion\src\bitacora.cpp
+	"bitacora.h"
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+
+1745809211 source:c:\users\ferit\documents\progra1git\archivos\9. archivos\secuenciales\crud_autenticacion\src\vendedores.cpp
+	"vendedores.h"
+	"bitacora.h"
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+	"usuarios.h"
+
